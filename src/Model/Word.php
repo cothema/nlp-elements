@@ -2,6 +2,6 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Word extends Nette\Object {
+class Word extends A\LetterPart {
 
 }

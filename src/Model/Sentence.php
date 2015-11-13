@@ -2,14 +2,13 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Sentence extends Part\Abstraction\LetterPart {
+class Sentence extends A\LetterPart {
 
-	private $text;
 	private $parts = [];
 	private $ending;
 
-	public function __construct() {
-		$this->text = '';
+	public function __construct($value = NULL) {
+		$this->value = $value;
 		$this->ending = '.';
 	}
 
@@ -30,6 +29,10 @@ class Sentence extends Part\Abstraction\LetterPart {
 	}
 
 	private function getText() {
+                if($this->value) {
+                    return $this->value;
+                }
+            
 		$out = '';
 
 		foreach ($this->parts as $part) {

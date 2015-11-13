@@ -2,7 +2,7 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Text extends Part\Abstraction\LetterPart {
+class Text extends A\LetterPart {
 
 	public function getSentences() {
 		$results = preg_split("~(\.+|\!+|\?+)(?=.*)~", $this->value, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);

@@ -2,6 +2,6 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Syllable extends Part\Abstraction\LetterPart {
+class Syllable extends A\LetterPart {
 
 }

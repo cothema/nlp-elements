@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Universal\Part\Abstraction;
+namespace Cothema\NLP\Elements\Model\A;
 
 abstract class Part extends \Nette\Object {
 
     protected $value;
+    protected $clean = TRUE;
 
-    public function __construct($string) {
+    public function __construct($value = NULL) {
         $this->value = $value;
-        $this->clean();
+        $this->clean && $this->clean();
     }
 
     public function __toString() {
@@ -18,35 +19,13 @@ abstract class Part extends \Nette\Object {
     protected function clean() {
         $this->value = trim($this->value);
     }
-
-    public function getLettersSmall() {
-        return array_map(function($in) {
-            return mb_strtolower($in, 'utf-8');
-        }, $this->getLetters());
-    }
-
-    public function getLetters() {
-        $len = 1;
-        preg_match_all("/./u", $this->value, $arr);
-        $arr = array_chunk($arr[0], $len);
-        $arr = array_map('implode', $arr);
-
-        for ($i = 1; isset($arr[$i]); $i++) {
-            if ($arr[$i] === 'h' && $arr[$i - 1] === 'c') {
-                unset($arr[$i - 1]);
-                $arr[$i] = 'ch';
-            }
-            if ($arr[$i] === 'h' && $arr[$i - 1] === 'C') {
-                unset($arr[$i - 1]);
-                $arr[$i] = 'Ch';
-            }
-            if ($arr[$i] === 'H' && $arr[$i - 1] === 'C') {
-                unset($arr[$i - 1]);
-                $arr[$i] = 'CH';
-            }
-        }
-
-        return array_values($arr);
+    
+    /**
+     * 
+     * @param string $string
+     */
+    public function append($string) {
+        $this->value .= $string;
     }
 
 }

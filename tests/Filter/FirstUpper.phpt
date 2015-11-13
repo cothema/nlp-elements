@@ -10,7 +10,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class FirstUpper extends \Tester\TestCase {
 
 	public function testCase1() {
-		Assert::same('Drak', (new Tested('drak'))->apply());
+		Assert::same('Michael', (new Tested('michael'))->apply());
 	}
 
 }

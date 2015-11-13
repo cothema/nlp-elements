@@ -2,6 +2,6 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Letter extends Part\Abstraction\LetterPart {
+class Letter extends A\LetterPart {
 
 }

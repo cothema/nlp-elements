@@ -9,9 +9,9 @@ require_once __DIR__ . '/../bootstrap.php';
 
 class UpperCase extends \Tester\TestCase {
 
-	public function testCase1() {
-		Assert::same('DRAK', (new Tested('Drak'))->apply());
-	}
+    public function testCase1() {
+        Assert::same('FRUIT', (new Tested('Fruit'))->apply());
+    }
 
 }
 

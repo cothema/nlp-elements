@@ -10,7 +10,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class LowerCase extends \Tester\TestCase {
 
 	public function testCase1() {
-		Assert::same('drak', (new Tested('Drak'))->apply());
+		Assert::same('car', (new Tested('Car'))->apply());
 	}
 
 }

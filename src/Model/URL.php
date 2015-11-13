@@ -2,6 +2,6 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Number extends A\Part {
-    
+class URL extends A\LetterPart {
+
 }
