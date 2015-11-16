@@ -10,11 +10,11 @@ require_once __DIR__ . '/../bootstrap.php';
 class Count extends \Tester\TestCase {
 
     public function testWords1() {
-        Assert::same(2, (new Tested('Word', 'red flower'))->getCount());
+        Assert::same(2, (new Tested('Expression\\Word', 'red flower'))->getCount());
     }
 
     public function testWords2() {
-        Assert::same(6, (new Tested('Word', 'Hi, my name is Michael Smith.'))->getCount());
+        Assert::same(6, (new Tested('Expression\\Word', 'Hi, my name is Michael Smith.'))->getCount());
     }
 
     public function testSentences1() {
