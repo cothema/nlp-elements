@@ -6,17 +6,17 @@ use Cothema\NLP\Elements\Model;
 
 class Sentence extends A\Tokenizer {
 
-    protected function process() {
-        $delimiters = '\.\?\!';
+	protected function process() {
+		$delimiters = '\.\?\!';
 
-        $array = preg_split("/([^" . $delimiters . "]+[" . $delimiters . "]+)/", $this->input, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+		$array = preg_split("/([^" . $delimiters . "]+[" . $delimiters . "]+)\s+/", $this->input, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-        $out = [];
-        foreach ($array as $arrayOne) {
-            $out[] = new Model\Sentence(trim($arrayOne));
-        };
+		$out = [];
+		foreach ($array as $arrayOne) {
+			$out[] = new Model\Sentence(trim($arrayOne));
+		};
 
-        $this->output = $out;
-    }
+		$this->output = $out;
+	}
 
 }
