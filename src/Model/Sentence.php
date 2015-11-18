@@ -2,9 +2,8 @@
 
 namespace Cothema\NLP\Elements\Model;
 
-class Sentence extends A\LetterPart {
+class Sentence extends A\Cluster {
 
-	private $parts = [];
 	private $ending;
 
 	public function __construct($value = NULL) {
@@ -26,32 +25,6 @@ class Sentence extends A\LetterPart {
 
 	public function addText($text) {
 		$this->parts[] = $text;
-	}
-
-	private function getText() {
-                if($this->value) {
-                    return $this->value;
-                }
-            
-		$out = '';
-
-		foreach ($this->parts as $part) {
-			if (trim($part) === '') {
-				continue;
-			}
-
-			if ($out !== '') {
-				$out .= ' ';
-			}
-
-			$out .= $part;
-		}
-
-		return trim($out) . $this->getEnding();
-	}
-
-	public function __toString() {
-		return $this->getText();
 	}
 
 }

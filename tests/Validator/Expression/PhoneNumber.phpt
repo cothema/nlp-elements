@@ -11,7 +11,7 @@ class PhoneNumber extends \Tester\TestCase {
 
     public function testValid() {
         $valid = [
-            '+420000000000'
+            '+420000000000','(+420)000000000','00420000000000', '123 456 789'
         ];
         
         foreach($valid as $validOne) {
@@ -21,7 +21,7 @@ class PhoneNumber extends \Tester\TestCase {
     
     public function testNotValid() {
         $valid = [
-            'phone'
+            'phone', '10.0.0.1'
         ];
         
         foreach($valid as $validOne) {

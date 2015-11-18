@@ -7,6 +7,8 @@ use Cothema\NLP\Elements\Validator;
 
 class Vowel extends A\Tokenizer {
 
+    protected $className = 'Vowel';
+    
     protected function process() {
         $array = $this->getVowels();
 

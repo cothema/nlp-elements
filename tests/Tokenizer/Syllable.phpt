@@ -42,6 +42,33 @@ class Syllable extends \Tester\TestCase {
         Assert::same('cha', $output[1]);
         Assert::same(2, count($output));
     }
+    
+    public function testCase5() {
+        $output = (new Tested('skála'))->tokenize(TRUE);
+
+        Assert::same('ská', $output[0]);
+        Assert::same('la', $output[1]);
+        Assert::same(2, count($output));
+    }
+    
+    public function testCase6() {
+        $output = (new Tested('mravenec'))->tokenize(TRUE);
+
+        Assert::same('mra', $output[0]);
+        Assert::same('ve', $output[1]);
+        Assert::same('nec', $output[2]);
+        Assert::same(3, count($output));
+    }
+    
+    public function testCase7() {
+        $output = (new Tested('podplukovník'))->tokenize(TRUE);
+
+        Assert::same('pod', $output[0]);
+        Assert::same('plu', $output[1]);
+        Assert::same('kov', $output[2]);
+        Assert::same('ník', $output[3]);
+        Assert::same(4, count($output));
+    }
 
 }
 

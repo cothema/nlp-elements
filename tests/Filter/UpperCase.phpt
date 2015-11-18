@@ -15,4 +15,4 @@ class UpperCase extends \Tester\TestCase {
 
 }
 
-(new Uppercase)->run();
+(new UpperCase)->run();

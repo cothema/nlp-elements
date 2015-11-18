@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../bootstrap.php';
 class URL extends \Tester\TestCase {
 
     public function testCase1() {
-        Assert::same('www.example.com', (string) (new Tested('www.example.com')));
+        Assert::same('http://www.example.com', (string) (new Tested('http://www.example.com')));
     }
 
 }
