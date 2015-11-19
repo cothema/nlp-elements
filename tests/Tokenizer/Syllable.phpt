@@ -3,71 +3,55 @@
 namespace Cothema\NLP\Test\Elements\Tokenizer;
 
 use Cothema\NLP\Elements\Tokenizer\Syllable as Tested;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-class Syllable extends \Tester\TestCase {
+class Syllable extends \Cothema\NLP\Test\A\TestCase {
 
-    public function testCase1() {
-        $output = (new Tested('kolo'))->tokenize(TRUE);
+    protected $tested = Tested::class;
 
-        Assert::same('ko', $output[0]);
-        Assert::same('lo', $output[1]);
-        Assert::same(2, count($output));
+    public function testCases() {
+        $this->iterateForCaseArray($this->getExampleData());
     }
 
-    public function testCase2() {
-        $output = (new Tested('plechovka'))->tokenize(TRUE);
+    private function getExampleData() {
+        return [
+            ['kolo', ['ko', 'lo']],
+            ['plechovka', ['ple', 'chov', 'ka']],
+            ['polička', ['po', 'lič', 'ka']],
+            ['moucha', ['mou', 'cha']],
+            ['skála', ['ská', 'la']],
+            ['mravenec', ['mra', 've', 'nec']],
+            ['podplukovník', ['pod', 'plu', 'kov', 'ník']],
+            ['otrkat', ['o', 'tr', 'kat']],
+            ['krk', ['krk']],
+            ['usrknout', ['u', 'srk', 'nout']],
+            ['krknout', ['krk', 'nout']],
+            ['náramek', ['ná', 'ra', 'mek']],
+            ['perla', ['per', 'la']],
+            ['zem', ['zem']],
+            ['skluzavka', ['sklu', 'zav', 'ka']],
+            ['mrknutí', ['mrk', 'nu', 'tí']],
+            ['cvaknutí', ['cvak', 'nu', 'tí']],
+            ['sentiment', ['sen', 'ti', 'ment']],
+            ['sentimentální', ['sen', 'ti', 'men', 'tál', 'ní']],
+            ['akce', ['ak', 'ce']],
+            ['akné', ['ak', 'né']],
+            ['sláva', ['slá', 'va']],
+            ['mouka', ['mou', 'ka']],
+            ['zkouška', ['zkouš', 'ka']],
+            ['krkavec', ['kr', 'ka', 'vec']],
+            ['škrtnout', ['škrt', 'nout']],
+            ['prvňák', ['prv', 'ňák']],
+            ['skaut', ['skaut']]
+        ];
 
-        Assert::same('ple', $output[0]);
-        Assert::same('chov', $output[1]);
-        Assert::same('ka', $output[2]);
-        Assert::same(3, count($output));
-    }
-    
-    public function testCase3() {
-        $output = (new Tested('polička'))->tokenize(TRUE);
-
-        Assert::same('po', $output[0]);
-        Assert::same('lič', $output[1]);
-        Assert::same('ka', $output[2]);
-        Assert::same(3, count($output));
-    }
-    
-    public function testCase4() {
-        $output = (new Tested('moucha'))->tokenize(TRUE);
-
-        Assert::same('mou', $output[0]);
-        Assert::same('cha', $output[1]);
-        Assert::same(2, count($output));
-    }
-    
-    public function testCase5() {
-        $output = (new Tested('skála'))->tokenize(TRUE);
-
-        Assert::same('ská', $output[0]);
-        Assert::same('la', $output[1]);
-        Assert::same(2, count($output));
-    }
-    
-    public function testCase6() {
-        $output = (new Tested('mravenec'))->tokenize(TRUE);
-
-        Assert::same('mra', $output[0]);
-        Assert::same('ve', $output[1]);
-        Assert::same('nec', $output[2]);
-        Assert::same(3, count($output));
-    }
-    
-    public function testCase7() {
-        $output = (new Tested('podplukovník'))->tokenize(TRUE);
-
-        Assert::same('pod', $output[0]);
-        Assert::same('plu', $output[1]);
-        Assert::same('kov', $output[2]);
-        Assert::same('ník', $output[3]);
-        Assert::same(4, count($output));
+        /* TODO:
+          ['kotrmelec', ['ko','tr','me','lec']]
+          ['Alžběta', ['Alž', 'bě', 'ta']],
+          ['prvouka', ['pr', 'vo', 'uka']],
+          ['pouliční', ['po', 'u', 'lič', 'ní']]
+         */
     }
 
 }

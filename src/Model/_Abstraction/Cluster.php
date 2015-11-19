@@ -2,10 +2,13 @@
 
 namespace Cothema\NLP\Elements\Model\A;
 
+use Cothema\NLP\Elements\Model;
+use Cothema\NLP\Elements\Model\Exception;
+
 abstract class Cluster extends LetterPart {
 
     protected $parts = [];
-    
+
     public function __toString() {
         return $this->getText();
     }
@@ -22,12 +25,26 @@ abstract class Cluster extends LetterPart {
                 continue;
             }
 
-            $out !== '' && $out .= ' ';
-
+            if(!($part instanceof Model\Punctuation)) {
+                $out !== '' && $out .= ' ';
+            }
+            
             $out .= $part;
         }
 
-        return trim($out) . $this->getEnding();
+        return trim($out);
+    }
+
+    public function addPart($part) {
+        if ($this->isPartValid($part)) {
+            $this->parts[] = $part;
+        } else {
+            throw new Exception\InvalidClusterPart();
+        }
+    }
+
+    protected function isPartValid($part) {
+        return true;
     }
 
 }

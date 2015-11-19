@@ -3,37 +3,23 @@
 namespace Cothema\NLP\Test\Elements\Tokenizer\Expression;
 
 use Cothema\NLP\Elements\Tokenizer\Expression\Word as Tested;
-use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-class Word extends \Tester\TestCase {
+class Word extends \Cothema\NLP\Test\A\TestCase {
 
-    public function testCase1() {
-        $output = (new Tested('apples and bananas'))->tokenize(TRUE);
-        
-        Assert::same('apples', $output[0]);
-        Assert::same('and', $output[1]);
-        Assert::same('bananas', $output[2]);
-        Assert::same(3, count($output));
+    protected $tested = Tested::class;
+
+    public function testCases() {
+        $this->iterateForCaseArray($this->getExampleData());
     }
-    
-    public function testCase2() {
-        $output = (new Tested('This is my dream.'))->tokenize(TRUE);
-        
-        Assert::same('This', $output[0]);
-        Assert::same('is', $output[1]);
-        Assert::same('my', $output[2]);
-        Assert::same('dream', $output[3]);
-        Assert::same(4, count($output));
-    }
-    
-    public function testCase3() {
-        $output = (new Tested('What\'s up?'))->tokenize(TRUE);
-        
-        Assert::same('What\'s', $output[0]);
-        Assert::same('up', $output[1]);
-        Assert::same(2, count($output));
+
+    private function getExampleData() {
+        return [
+            ['apples and bananas', ['apples','and','bananas']],
+            ['This is my dream.', ['This','is','my','dream']],
+            ['What\'s up?', ['What\'s','up']]
+        ];
     }
 
 }

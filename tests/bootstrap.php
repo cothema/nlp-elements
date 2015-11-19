@@ -13,6 +13,7 @@ require_once DIR_ROOT . '/vendor/autoload.php';
 $loader = new RobotLoader;
 
 $loader->addDirectory(DIR_ROOT . '/src');
+$loader->addDirectory(DIR_TESTS . '/_Abstraction');
 $loader->setCacheStorage(new FileStorage(DIR_TEMP));
 $loader->register();
 

@@ -3,26 +3,22 @@
 namespace Cothema\NLP\Test\Elements\Tokenizer;
 
 use Cothema\NLP\Elements\Tokenizer\Vowel as Tested;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-class Vowel extends \Tester\TestCase {
+class Vowel extends \Cothema\NLP\Test\A\TestCase {
 
-    public function testCase1() {
-        $output = (new Tested('Chars'))->tokenize(TRUE);
-        
-        Assert::same('a', $output[0]);
-        Assert::same(1, count($output));
+    protected $tested = Tested::class;
+
+    public function testCases() {
+        $this->iterateForCaseArray($this->getExampleData());
     }
-    
-    public function testCase2() {
-        $output = (new Tested('Scooter'))->tokenize(TRUE);
-        
-        Assert::same('o', $output[0]);
-        Assert::same('o', $output[1]);
-        Assert::same('e', $output[2]);
-        Assert::same(3, count($output));
+
+    private function getExampleData() {
+        return [
+            ['Chars', ['a']],
+            ['Scooter', ['o', 'o', 'e']]
+        ];
     }
 
 }

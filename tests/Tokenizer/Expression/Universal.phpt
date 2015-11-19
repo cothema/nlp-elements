@@ -32,27 +32,27 @@ class Universal extends \Tester\TestCase {
     public function testCase3() {
         $output = (new Tested('5 apples'))->tokenize();
 
-        Assert::true($output[0] instanceof Model\Expression\Number);
-        Assert::true($output[1] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Number::class, $output[0]);
+        Assert::type(Model\Expression\Word::class, $output[1]);
         Assert::same(2, count($output));
     }
 
     public function testCase4() {
         $output = (new Tested('4 cats and 3 dogs.'))->tokenize();
 
-        Assert::true($output[0] instanceof Model\Expression\Number);
-        Assert::true($output[1] instanceof Model\Expression\Word);
-        Assert::true($output[2] instanceof Model\Expression\Word);
-        Assert::true($output[3] instanceof Model\Expression\Number);
-        Assert::true($output[4] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Number::class, $output[0]);
+        Assert::type(Model\Expression\Word::class, $output[1]);
+        Assert::type(Model\Expression\Word::class, $output[2]);
+        Assert::type(Model\Expression\Number::class, $output[3]);
+        Assert::type(Model\Expression\Word::class, $output[4]);
         Assert::same(5, count($output));
     }
 
     public function testCase5() {
         $output = (new Tested('What\'s up?'))->tokenize();
 
-        Assert::true($output[0] instanceof Model\Expression\Contraction);
-        Assert::true($output[1] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Contraction::class, $output[0]);
+        Assert::type(Model\Expression\Word::class, $output[1]);
         Assert::same(2, count($output));
     }
 
@@ -60,15 +60,15 @@ class Universal extends \Tester\TestCase {
         $output = (new Tested('My email is test@example.com. My phone number is +420123456789.'))->tokenize();
 
         Assert::same('My', (string) $output[0]);
-        Assert::true($output[0] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Word::class, $output[0]);
         Assert::same('email', (string) $output[1]);
-        Assert::true($output[1] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Word::class, $output[1]);
         Assert::same('is', (string) $output[2]);
-        Assert::true($output[2] instanceof Model\Expression\Word);
+        Assert::type(Model\Expression\Word::class, $output[2]);
         Assert::same('test@example.com', (string) $output[3]);
-        Assert::true($output[3] instanceof Model\Expression\Email);
+        Assert::type(Model\Expression\Email::class, $output[3]);
         Assert::same('+420123456789', (string) $output[8]);
-        Assert::true($output[8] instanceof Model\Expression\PhoneNumber);
+        Assert::type(Model\Expression\PhoneNumber::class, $output[8]);
         Assert::same(9, count($output));
     }
 
@@ -76,7 +76,7 @@ class Universal extends \Tester\TestCase {
         $output = (new Tested('Go to my website: example.com!'))->tokenize();
 
         Assert::same('example.com', (string) $output[4]);
-        Assert::true($output[4] instanceof Model\Expression\URLSimple);
+        Assert::type(Model\Expression\URLSimple::class, $output[4]);
         Assert::same(5, count($output));
     }
     
@@ -84,9 +84,9 @@ class Universal extends \Tester\TestCase {
         $output = (new Tested('My local IP Addresses are: 127.0.0.1 and ::1.'))->tokenize();
 
         Assert::same('127.0.0.1', (string) $output[5]);var_dump($output[5] );
-        Assert::true($output[5] instanceof Model\Expression\IPAddressV4);
+        Assert::type(Model\Expression\IPAddressV4::class, $output[5]);
         Assert::same('::1', (string) $output[7]);
-        Assert::true($output[7] instanceof Model\Expression\IPAddressV6);
+        Assert::type(Model\Expression\IPAddressV6::class, $output[7]);
         Assert::same(8, count($output));
     }
 

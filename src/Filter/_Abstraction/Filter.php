@@ -11,6 +11,10 @@ abstract class Filter extends \Nette\Object implements \Cothema\NLP\Elements\Fil
     public function __construct($input) {
         $this->value = (string) $input;
     }
+    
+    public function __toString() {
+        return $this->apply();
+    }
 
     public function apply() {
         $this->process();

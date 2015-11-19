@@ -3,26 +3,22 @@
 namespace Cothema\NLP\Test\Elements\Tokenizer;
 
 use Cothema\NLP\Elements\Tokenizer\Sentence as Tested;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-class Sentence extends \Tester\TestCase {
+class Sentence extends \Cothema\NLP\Test\A\TestCase {
 
-    public function testCase1() {
-        $output = (new Tested('There are 2 sentences. This is the last one.'))->tokenize(TRUE);
+    protected $tested = Tested::class;
 
-        Assert::same('There are 2 sentences.', $output[0]);
-        Assert::same('This is the last one.', $output[1]);
-        Assert::same(2, count($output));
+    public function testCases() {
+        $this->iterateForCaseArray($this->getExampleData());
     }
 
-    public function testCase2() {
-        $output = (new Tested('Are you sure? Yes, I am!'))->tokenize(TRUE);
-
-        Assert::same('Are you sure?', $output[0]);
-        Assert::same('Yes, I am!', $output[1]);
-        Assert::same(2, count($output));
+    private function getExampleData() {
+        return [
+            ['There are 2 sentences. This is the last one.', ['There are 2 sentences.', 'This is the last one.']],
+            ['Are you sure? Yes, I am!', ['Are you sure?', 'Yes, I am!']]
+        ];
     }
 
 }

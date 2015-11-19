@@ -3,34 +3,24 @@
 namespace Cothema\NLP\Test\Elements\Tokenizer\Expression;
 
 use Cothema\NLP\Elements\Tokenizer\Expression\Number as Tested;
-use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-class Number extends \Tester\TestCase {
+class Number extends \Cothema\NLP\Test\A\TestCase {
 
-	public function testCase1() {
-		$output = (new Tested('2 apples and 5 bananas'))->tokenize(TRUE);
+    protected $tested = Tested::class;
 
-		Assert::same('2', $output[0]);
-		Assert::same('5', $output[1]);
-		Assert::same(2, count($output));
-	}
+    public function testCases() {
+        $this->iterateForCaseArray($this->getExampleData());
+    }
 
-	public function testCase2() {
-		$output = (new Tested('5, 2 3'))->tokenize(TRUE);
-
-		Assert::same('5', $output[0]);
-		Assert::same('2', $output[1]);
-		Assert::same('3', $output[2]);
-		Assert::same(3, count($output));
-	}
-
-	public function testCase3() {
-		$output = (new Tested('What\'s up?'))->tokenize(TRUE);
-
-		Assert::same(0, count($output));
-	}
+    private function getExampleData() {
+        return [
+            ['2 apples and 5 bananas', ['2', '5']],
+            ['5, 2 3', ['5', '2', '3']],
+            ['What\'s up?', []]
+        ];
+    }
 
 }
 

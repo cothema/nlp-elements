@@ -12,9 +12,9 @@ class Paragraph extends \Tester\TestCase {
 
     public function testValid1() {
         $example = (new Tested('Hi Michael!'))->getOutput();
-        
-        Assert::true($example instanceof Model\Paragraph);
-        Assert::same('Hi Michael!', (string)$example);
+
+        Assert::type(Model\Paragraph::class, $example);
+        Assert::same('Hi Michael!', (string) $example);
     }
 
 }
