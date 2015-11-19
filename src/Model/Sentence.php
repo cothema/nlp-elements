@@ -11,7 +11,7 @@ class Sentence extends A\Cluster {
 		$this->ending = '.';
 	}
 
-	private function getEnding() {
+	public function getEnding() {
 		return $this->ending;
 	}
 
