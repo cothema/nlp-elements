@@ -26,7 +26,7 @@ abstract class Part extends \Nette\Object {
         $value !== NULL && $this->setValue($value);
         $this->clean && $this->clean();
         
-        foreach($this->getAllowedFlagKeys() as $flag) {
+        foreach ($this->getAllowedFlagKeys() as $flag) {
             $this->flags[$flag] = [];
         }
     }

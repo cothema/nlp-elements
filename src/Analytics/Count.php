@@ -38,12 +38,12 @@ class Count extends \Nette\Object {
             return (new $class($this->value));
         }
 
-        throw new Exception\TokenizerNotFound('Tokenizer "'.$this->tokenizer.'" is missing!');
+        throw new Exception\TokenizerNotFound('Tokenizer "' . $this->tokenizer . '" is missing!');
     }
 
     private function setTokenizer($name) {
         if (!class_exists($this->getTokenizerClass($name))) {
-            throw new Exception\TokenizerNotFound('Tokenizer "'.$name.'" not found!');
+            throw new Exception\TokenizerNotFound('Tokenizer "' . $name . '" not found!');
         }
         
         $this->tokenizer = $name;

@@ -6,8 +6,8 @@ use Nette\Utils\Strings;
 
 class UpperCase extends A\Filter {
 
-	protected function process() {
-		$this->value = Strings::upper($this->value);
-	}
+    protected function process() {
+        $this->value = Strings::upper($this->value);
+    }
 
 }
