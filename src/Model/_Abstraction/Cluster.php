@@ -25,7 +25,7 @@ abstract class Cluster extends LetterPart {
                 continue;
             }
 
-            if(!($part instanceof Model\Punctuation)) {
+            if (!($part instanceof Model\Punctuation)) {
                 $out !== '' && $out .= ' ';
             }
             

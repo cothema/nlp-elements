@@ -6,8 +6,8 @@ use Nette\Utils\Strings;
 
 class NoAccents extends A\Filter {
 
-	protected function process() {
-		$this->value = Strings::toAscii($this->value);
-	}
+    protected function process() {
+        $this->value = Strings::toAscii($this->value);
+    }
 
 }

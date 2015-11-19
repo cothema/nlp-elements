@@ -24,7 +24,7 @@ class Syllable extends A\Tokenizer {
     }
 
     private static function isVoiceless($letter) {
-        return in_array($letter, ['p', 't', 'ť', 'k', 'f', 's','š', 'ch', 'c', 'č']);
+        return in_array($letter, ['p', 't', 'ť', 'k', 'f', 's', 'š', 'ch', 'c', 'č']);
     }
 
     private function preprocess() {
@@ -114,13 +114,13 @@ class Syllable extends A\Tokenizer {
                 $this->process['nonVowelCount'] = 0;
                 $this->process['candidate'] = TRUE;
             } else {
-                $this->process['nonVowelCount'] ++;
+                $this->process['nonVowelCount']++;
             }
         }
     }
 
     private function newSyllable() {
-        $this->process['syllableIndex'] ++;
+        $this->process['syllableIndex']++;
         $this->process['closeBefore'] = FALSE;
         $this->process['closeAfter'] = FALSE;
         $this->process['candidate'] = FALSE;
@@ -130,7 +130,7 @@ class Syllable extends A\Tokenizer {
 
     private function appendToActualSyllable($letterIndex) {
         $this->appendToSyllable($this->process['syllableIndex'], $letterIndex);
-        $this->process['syllableLetterIndex'] ++;
+        $this->process['syllableLetterIndex']++;
     }
 
     private function appendToSyllable($syllableIndex, $letterIndex) {

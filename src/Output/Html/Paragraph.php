@@ -13,7 +13,7 @@ class Paragraph extends \Cothema\NLP\Elements\Output\A\Output implements \Cothem
      * @param ModelParagraph $content
      */
     public function __construct($content) {
-        if($content instanceof ModelParagraph) {
+        if ($content instanceof ModelParagraph) {
             $this->content = $content;
         } else {
             throw new Exception\InvalidInput;
